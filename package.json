@@ -1,0 +1,48 @@
+{
+  "name": "ceri-loader",
+  "description": "webpack loader, that wraps ceri-compiler",
+  "version": "0.0.0",
+  "homepage": "https://github.com/cerijs/",
+  "author": {
+    "name": "Paul Pflugradt",
+    "email": "paul.pflugradt@gmail.com"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cerijs/ceri-loader"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "main": "lib/loader.js",
+  "files": [
+    "lib/*.js"
+  ],
+  "dependencies": {
+    "loader-utils": "^0.2.16",
+    "ceri-compiler": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "coffee-script": "^1.12.3",
+    "mocha": "^3.2.0",
+    "rimraf": "^2.5.4"
+  },
+  "keywords": [
+    "ceri",
+    "loader",
+    "webpack"
+  ],
+  "readmeFilename": "README.md",
+  "scripts": {
+    "clean": "rimraf lib/*",
+    "prebuild": "npm run clean",
+    "build": "coffee --no-header --compile --output lib/ src/*.coffee",
+    "watch": "coffee --no-header --compile --watch --output lib/ src/*.coffee",
+    "test": "mocha",
+    "preversion": "npm test",
+    "version": "npm run build && git add .",
+    "postversion": "git push && git push --tags && npm publish"
+  }
+}
