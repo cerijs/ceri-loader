@@ -1,7 +1,7 @@
 {
   "name": "ceri-loader",
   "description": "webpack loader, that wraps ceri-compiler",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/cerijs/",
   "author": {
     "name": "Paul Pflugradt",
