@@ -2,7 +2,9 @@ compiler = require "ceri-compiler"
 loaderUtils = require "loader-utils"
 module.exports = (source, map) ->
   @cacheable?()
-  query = loaderUtils.parseQuery @query
+  options = loaderUtils.getOptions(@) || {}
   cb = @async?() || @callback
-  query.js = source
-  cb(null,compiler(query),map)
+  options.js = source
+  compiler(options).then (result) =>
+    cb(null,result,map)
+  return null
